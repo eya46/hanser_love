@@ -19,6 +19,6 @@ jobs:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           projectName: hanser
-          directory: /
+          directory: /hanser
           # Optional: Enable this if you want to have GitHub Deployments triggered
-#          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
