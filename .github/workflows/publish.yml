@@ -9,6 +9,7 @@ jobs:
           account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           project-name: hanser
           api-key: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          email: ${{ secrets.CF_EMAIL }}
           production: true
 
 #jobs:
