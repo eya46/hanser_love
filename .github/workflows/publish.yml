@@ -1,24 +1,35 @@
 on: [ push ]
 
 jobs:
-  publish:
+  deploy:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      deployments: write
-    name: Publish to Cloudflare Pages
     steps:
-      - name: Checkout
-        uses: actions/checkout@v3
-
-      # Run a build step here if your project requires
-
-      - name: Publish to Cloudflare Pages
-        uses: cloudflare/pages-action@v1
+      - uses: tomjschuster/cloudflare-pages-deploy-action@v0
         with:
-          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
-          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: hanser
-          directory: ./hanser
-          # Optional: Enable this if you want to have GitHub Deployments triggered
-          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          account-id: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          project-name: hanser
+          api-key: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          production: true
+
+#jobs:
+#  publish:
+#    runs-on: ubuntu-latest
+#    permissions:
+#      contents: read
+#      deployments: write
+#    name: Publish to Cloudflare Pages
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v3
+#
+#      # Run a build step here if your project requires
+#
+#      - name: Publish to Cloudflare Pages
+#        uses: cloudflare/pages-action@v1
+#        with:
+#          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+#          accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+#          projectName: hanser
+#          directory: ./hanser
+#          # Optional: Enable this if you want to have GitHub Deployments triggered
+#          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
