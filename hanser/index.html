@@ -6,6 +6,21 @@
     <meta charset="UTF-8">
     <title>Hanser~~</title>
     <style>
+        body::before {
+            content: '';
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            background: #dbcdbf url('bg.webp') center / cover no-repeat;
+            filter: blur(40px);
+            transform: scale(1.06); /* 防止模糊后的边缘透出白边 */
+            transition: filter 0.8s ease-out;
+        }
+
+        body.bg-loaded::before {
+            filter: blur(6px);
+        }
+
         a {
             display: block;
             margin: 1em auto;
@@ -15,6 +30,13 @@
             color: blue;
         }
     </style>
+    <script>
+        addEventListener('DOMContentLoaded', () => {
+            const bg = new Image();
+            bg.onload = () => document.body.classList.add('bg-loaded');
+            bg.src = 'bg.webp';
+        });
+    </script>
     <base href="." target="_blank">
     <!--    <script>-->
     <!--        window.onload = ()=>{document.querySelectorAll("a").forEach((i)=>i.setAttribute("target","_blank"))}-->
